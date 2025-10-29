@@ -25,4 +25,7 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> 
            "ELSE c.senderUsername END " +
            "FROM ChatMessage c WHERE c.senderUsername = :username OR c.receiverUsername = :username")
     List<String> findDistinctConversationPartners(@Param("username") String username);
+    
+    @Query("SELECT c FROM ChatMessage c WHERE c.receiverUsername IS NULL ORDER BY c.timestamp ASC")
+    List<ChatMessage> findBroadcastMessages();
 }

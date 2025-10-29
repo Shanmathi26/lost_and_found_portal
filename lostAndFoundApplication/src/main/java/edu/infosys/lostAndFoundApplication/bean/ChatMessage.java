@@ -14,8 +14,8 @@ public class ChatMessage {
     @Column(nullable = false)
     private String senderUsername;
     
-    @Column(nullable = false)
-    private String receiverUsername;
+    @Column(nullable = true)
+    private String receiverUsername; // null for broadcast messages
     
     @Column(nullable = false, length = 1000)
     private String content;
@@ -32,6 +32,15 @@ public class ChatMessage {
     public ChatMessage(String senderUsername, String receiverUsername, String content) {
         this.senderUsername = senderUsername;
         this.receiverUsername = receiverUsername;
+        this.content = content;
+        this.timestamp = LocalDateTime.now();
+        this.isRead = false;
+    }
+    
+    // Constructor for broadcast messages
+    public ChatMessage(String senderUsername, String content) {
+        this.senderUsername = senderUsername;
+        this.receiverUsername = null; // broadcast message
         this.content = content;
         this.timestamp = LocalDateTime.now();
         this.isRead = false;

@@ -29,11 +29,13 @@ public class SystemConfig {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests((authorize) ->
-        authorize.requestMatchers(HttpMethod.GET, "/lost-found/**").permitAll()
+		http.csrf().disable()
+		    .cors().and()
+		    .authorizeHttpRequests((authorize) ->
+        authorize.requestMatchers("/api/chat/**").permitAll()
+               .requestMatchers(HttpMethod.GET, "/lost-found/**").permitAll()
                .requestMatchers("/lost-found/**").permitAll()
                .requestMatchers("/api/**").permitAll()
-               .requestMatchers("/chat/**").permitAll()
                .anyRequest().authenticated()
                );    		
 	      return http.build();

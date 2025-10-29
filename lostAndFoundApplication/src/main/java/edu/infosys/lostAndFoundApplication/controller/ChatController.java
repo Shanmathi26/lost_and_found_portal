@@ -9,6 +9,7 @@ import edu.infosys.lostAndFoundApplication.bean.ChatMessage;
 import edu.infosys.lostAndFoundApplication.service.ChatService;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/chat")
@@ -36,5 +37,24 @@ public class ChatController {
     public ResponseEntity<List<String>> getUserConversations(@PathVariable String username) {
         List<String> conversations = chatService.getUserConversations(username);
         return ResponseEntity.ok(conversations);
+    }
+    
+    @GetMapping("/broadcast")
+    public ResponseEntity<List<ChatMessage>> getBroadcastMessages() {
+        List<ChatMessage> messages = chatService.getBroadcastMessages();
+        return ResponseEntity.ok(messages);
+    }
+    
+    @PostMapping("/broadcast")
+    public ResponseEntity<ChatMessage> sendBroadcastMessage(@RequestBody ChatMessage message) {
+        try {
+            message.setReceiverUsername(null); // Mark as broadcast
+            message.setTimestamp(java.time.LocalDateTime.now());
+            ChatMessage savedMessage = chatService.sendMessage(message);
+            return ResponseEntity.ok(savedMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).build();
+        }
     }
 }

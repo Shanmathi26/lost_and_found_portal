@@ -28,4 +28,8 @@ public class ChatService {
     public List<String> getUserConversations(String username) {
         return chatMessageRepository.findDistinctConversationPartners(username);
     }
+    
+    public List<ChatMessage> getBroadcastMessages() {
+        return chatMessageRepository.findBroadcastMessages();
+    }
 }
