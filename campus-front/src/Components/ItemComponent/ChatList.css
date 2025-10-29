@@ -1,0 +1,62 @@
+.chat-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.conversations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.conversation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.conversation-item:hover {
+  background: #f8f9fa;
+}
+
+.user-info h4 {
+  margin: 0;
+  color: #333;
+}
+
+.chat-arrow {
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.no-chats {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+}
