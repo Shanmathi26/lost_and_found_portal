@@ -423,12 +423,7 @@ const LostItemReport = () => {
                           >
                             Confirm This Is My Item
                           </button>
-                          <button
-                            className="chat-btn"
-                            onClick={() => navigate(`/chat/${item.finder_username || item.finderUsername}`)}
-                          >
-                            💬 Chat with Finder
-                          </button>
+
                           <button
                             className="reject-btn"
                             onClick={() => handleConfirmMatch(item, false)}

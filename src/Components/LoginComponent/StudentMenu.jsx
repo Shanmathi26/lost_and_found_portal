@@ -136,6 +136,9 @@ const StudentMenu = () => {
             <button className="action-btn tertiary" onClick={() => navigate('/found-item-report')} style={{backgroundColor: '#f39c12'}}>
               Found Item Report
             </button>
+            <button className="action-btn chat" onClick={() => navigate('/public-chat')} style={{backgroundColor: '#28a745'}}>
+              💬 Campus Chat
+            </button>
           </div>
         </div>
       </div>

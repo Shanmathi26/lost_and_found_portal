@@ -297,26 +297,7 @@ const FoundItemReport = () => {
                 </div>
               </div>
               
-              {userRole !== 'Admin' && notifiedUsers[item.itemId] && notifiedUsers[item.itemId].length > 0 && (
-                <div className="card-footer">
-                  <div className="notified-users-section">
-                    <h4>Notified Users ({notifiedUsers[item.itemId].length})</h4>
-                    <div className="notified-users-list">
-                      {notifiedUsers[item.itemId].map(username => (
-                        <div key={username} className="notified-user-item">
-                          <span className="username">{username}</span>
-                          <button 
-                            className="chat-user-btn"
-                            onClick={() => navigate(`/chat/${username}`)}
-                          >
-                            💬 Chat
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
+
             </div>
           ))}
         </div>

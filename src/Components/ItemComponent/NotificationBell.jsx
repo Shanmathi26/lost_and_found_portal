@@ -113,24 +113,7 @@ const NotificationBell = () => {
                     <div className="notification-time">
                       {formatTime(notification.timestamp)}
                     </div>
-                    {(notification.type === 'MATCH_FOUND' || notification.type === 'MATCH_CONFIRMED' || notification.type === 'POTENTIAL_MATCH') && (
-                      <button 
-                        className="notification-chat-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowDropdown(false);
-                          // Extract username from notification message or use relatedUsername
-                          const chatUser = notification.relatedUsername || 
-                                         notification.message.match(/from ([^\s]+)/)?.[1] ||
-                                         notification.message.match(/by ([^\s]+)/)?.[1];
-                          if (chatUser) {
-                            navigate(`/chat/${chatUser}`);
-                          }
-                        }}
-                      >
-                        💬 Chat
-                      </button>
-                    )}
+
                   </div>
                   {!notification.read && (
                     <div className="unread-indicator"></div>
